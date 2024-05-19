@@ -1,0 +1,99 @@
+.send{
+    text-align: center;
+}
+#suscrib{
+    background-color: #03553E;
+    color: white;
+}
+.contenedor{
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.contenedor > div,
+.contenedor .contacto,
+.contenedor .suscribete,
+.contenedor .visitanos{
+    background-color:  white;
+    padding: 20px;
+}
+
+.contenedor .contacto{
+    background-color: rgb(87, 189, 230);
+    color: white;
+}
+.contenedor .suscribete{
+    background-color: rgb(8, 111, 152);
+    color: white;
+    grid-row: span 2;
+}
+.contenedor .visitanos{
+    background-color: white;
+    color: black;
+}
+
+.iconos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, auto);
+}
+
+.iconos > div,
+.iconos .facebook,
+.iconos .instagram,
+.iconos .x{
+    text-align: center;
+}
+
+.x{
+    font-size: 45px;
+}
+
+.enlaces{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.enlaces > div,
+.enlaces .envio,
+.enlaces .pregunta,
+.enlaces .metodo,
+.enlaces .politica{
+    text-align: center;
+    color: white;
+}
+
+@media screen and (max-width: 768px){
+    .contenedor .contacto{
+        grid-column: 1 /-1;
+    }
+    .contenedor .suscribete{
+        grid-column: 1 / -1;
+    }
+    .contenedor .visitanos{
+        grid-column: 1 / -1;
+    }
+}
+
+@media screen and (max-width: 570px){
+    .iconos .facebook{
+        grid-column: 1 / -1;
+    }
+    .iconos .instagram{
+        grid-column: 1 / -1;
+    }
+    .iconos .x{
+        grid-column: 1 / -1;
+    }
+}
+@media screen and (max-width: 570px){
+    .contenedor .contacto{
+        text-align: center;
+    }
+    .contenedor .visitanos{
+        text-align: center;
+    }
+}

@@ -1,0 +1,19 @@
+.texto{
+    color: white;
+}
+
+.texto > p, button{
+    font-size: 18px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+    background-color: #e3f2fd;;
+}
+
+#carouselExampleDark{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

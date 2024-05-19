@@ -1,0 +1,14 @@
+<p>Próximas Juntas</p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let reservacion of reservaciones; let i = index" class="col">
+      <div class="card h-100">
+        <img src="../../assets/{{getImagen()}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h3 class="card-title">Junta en {{getNombreSala(reservaciones[i].id_sala)}}</h3>
+          <p class="card-text"><b>Fecha de Inicio:</b> {{reservaciones[i].fecha_inicio}}</p>
+          <p class="card-text"><b>Fecha de Término:</b> {{reservaciones[i].fecha_fin}}</p>
+          <button type="button" (click)="verReservacion(reservaciones[i])" class="btn btn-info">Ver Reservacion</button>
+        </div>
+      </div>
+    </div>
+</div>

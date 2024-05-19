@@ -1,0 +1,29 @@
+<div *ngIf="existenSalas() else noExistenSalas">
+    <app-carousel [salas]="salas"></app-carousel>
+</div>
+
+<div *ngIf="existenReservaciones() else noExistenReservaciones">
+    <app-vista-reservaciones [reservaciones]="reservaciones"></app-vista-reservaciones>
+</div>
+
+<ng-template #noExistenReservaciones>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">No existen reservaciones</h1>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #noExistenSalas>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">No existen salas</h1>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+

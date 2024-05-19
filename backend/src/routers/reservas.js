@@ -36,11 +36,69 @@ routerReservas.post('/', (req, res) => {
 });
 
 
-
-
-
+// Obtener todas las reservas con GET
 routerReservas.get('/', (req, res) => {
-    
+    // creamos la consulta
+    const query = 'SELECT * FROM reservacion';
+    // ejecutamos la consulta
+    connection.query(query, (error, results) => {
+        if(error) { // si hay un error
+            // respondemos con un mensaje de error
+            res.status(500).json({success: false, message: 'Error al obtener las reservas'});
+        } else {
+            // si no hay errores, respondemos con las reservas obtenidas
+            res.json(results);
+        }
+    });
+});
+
+
+// Actualizar una reserva con PUT
+routerReservas.put('/:id', (req, res) => {
+    const id = req.params.id; // obtenemos el id de la reserva
+    const {id_sala, fecha_inicio, fecha_fin} = req.body; // obtenemos los datos del body
+    // creamos la consulta
+    const query = `UPDATE reservacion SET id_sala = ${id_sala}, fecha_inicio = '${fecha_inicio}', fecha_fin = '${fecha_fin}' WHERE id_reservacion = ${id}`;
+    // ejecutamos la consulta
+    connection.query(query, (error, results) => {
+        if(error) { // si hay un error
+            // respondemos con un mensaje de error
+            res.status(500).json({success: false, message: 'Error al actualizar la reserva'});
+        } else {
+            // si no hay errores
+            if(results.affectedRows > 0) { // si se afecto alguna fila
+                // respondemos con un mensaje de exito
+                res.json({success: true, message: 'Reserva actualizada con exito'});
+            } else {
+                // si no se afecto ninguna fila, respondemos con un mensaje de error
+                res.status(404).json({success: false, message: 'La reserva no existe'});
+            }
+        }
+    });
+});
+
+
+// Eliminar una reserva con DELETE
+routerReservas.delete('/:id', (req, res) => {
+    const id = req.params.id; // obtenemos el id de la reserva
+    // creamos la consulta
+    const query = `DELETE FROM reservacion WHERE id_reservacion = ${id}`;
+    // ejecutamos la consulta
+    connection.query(query, (error, results) => {
+        if(error) { // si hay un error
+            // respondemos con un mensaje de error
+            res.status(500).json({success: false, message: 'Error al eliminar la reserva'});
+        } else {
+            // si no hay errores
+            if(results.affectedRows > 0) { // si se afecto alguna fila
+                // respondemos con un mensaje de exito
+                res.json({success: true, message: 'Reserva eliminada con exito'});
+            } else {
+                // si no se afecto ninguna fila, respondemos con un mensaje de error
+                res.status(404).json({success: false, message: 'La reserva no existe'});
+            }
+        }
+    });
 });
 
 
