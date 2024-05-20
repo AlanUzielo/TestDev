@@ -1,26 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Sala } from '../sala.model';
+import { RouterLink } from '@angular/router';
+import { ApiSalasService } from '../api-salas.service';
 
 @Component({
   selector: 'app-carousel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css'
 })
 export class CarouselComponent {
   @Input() salas: Sala[] = [];
 
-  imagenes: string[] = ["sala1.jpeg", "sala2.jpeg", "sala3.jpg", "sala4.jpeg", "sala5.jpg", "sala6.jpg",
-    "sala7.jpeg", "sala8.jpeg", "sala9.jpg", "sala10.jpg"];
+  constructor(private apiSalas: ApiSalasService){}
 
+  imagen: string = '';
 
   getImagen(): string {
-    return this.imagenes[Math.floor(Math.random() * this.imagenes.length)];
-  }
-
-  verSala(sala: Sala) {
-    console.log(sala);
+    this.imagen = this.apiSalas.getImagen();
+    return this.imagen;
   }
 }

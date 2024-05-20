@@ -1,1 +1,37 @@
-<p>vista-salas works!</p>
+<div class="alert alert-primary" role="alert">
+    Salas Existentes
+</div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button id="btnCrearSala" class="btn btn-primary" type="button">
+        <a [routerLink]="['/editarsala']">Crear Nueva Sala</a>
+    </button>
+</div>
+
+<div class="contenedor" *ngIf="existenSalas() else noExistenSalas">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div *ngFor="let sala of salas; let i = index" class="col">
+        <div class="card h-100">
+            <img src="../../assets/{{getImagen()}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">{{salas[i].nombre}}</h3>
+                <p class="card-text">Sala que se encuentra ubicada en <b>{{salas[i].ubicacion}}</b></p>
+                <p class="card-text">Esta cuenta con una capacidad de hasta <b>{{salas[i].capacidad}}</b> personas.</p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-success">
+                        <a [routerLink]="['/sala', salas[i].id_sala, salas[i].nombre, salas[i].ubicacion, salas[i].capacidad,imagen]">Ver Sala</a>
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                        <a [routerLink]="['/editarsala', salas[i].id_sala, salas[i].nombre, salas[i].ubicacion, salas[i].capacidad,imagen]">Editar Sala</a>
+                    </button>
+                    <button type="button" (click)="borrarSala(salas[i].id_sala)" class="btn btn-danger">Eliminar Sala</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noExistenSalas>
+    <p>No tienes salas reservadas</p>
+</ng-template>

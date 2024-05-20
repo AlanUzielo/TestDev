@@ -1,53 +1,67 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Reservacion } from '../reservacion.model';
 import { CommonModule } from '@angular/common';
+import { ApiSalasService } from '../api-salas.service';
+import { RouterLink } from '@angular/router';
+import { ApiReservasService } from '../api-reservas.service';
+import * as alertify from 'alertifyjs';
+import { Sala } from '../sala.model';
 
 @Component({
   selector: 'app-vista-reservaciones',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './vista-reservaciones.component.html',
   styleUrl: './vista-reservaciones.component.css'
 })
-export class VistaReservacionesComponent {
-  @Input() reservaciones: Reservacion[] = [];
 
-  imagenes: string[] = ["sala1.jpeg", "sala2.jpeg", "sala3.jpg", "sala4.jpeg", "sala5.jpg", "sala6.jpg",
-    "sala7.jpeg", "sala8.jpeg", "sala9.jpg", "sala10.jpg"];
+export class VistaReservacionesComponent implements OnInit{
+  reservaciones: Reservacion[] = [];
+  salas: Sala[] = [];
+  
+  imagen = '';
 
+  constructor(private apiSalas: ApiSalasService, private apiReservas: ApiReservasService){}
 
-  getImagen(): string {
-    return this.imagenes[Math.floor(Math.random() * this.imagenes.length)];
+  ngOnInit(){
+    this.apiReservas.getReservaciones().then((response: any) => {
+      console.log(response);
+      this.reservaciones = response;
+    });
+    this.apiSalas.getSalas().then((response: any) => {
+      console.log(response);
+      this.salas = response;
+    });
   }
 
-  verReservacion(reservacion: Reservacion) {
-    alert('Reservación de ');
+  getImagen(): string {
+    this.imagen = this.apiSalas.getImagen(); 
+    return this.imagen;
   }
 
   getNombreSala(id:number): string {
-    switch (id) {
-      case 1:
-        return "Sala de juntas 1";
-      case 2:
-        return "Sala de juntas 2";
-      case 3:
-        return "Sala de juntas 3";
-      case 4:
-        return "Sala de juntas 4";
-      case 5:
-        return "Sala de juntas 5";
-      case 6:
-        return "Sala de juntas 6";
-      case 7:
-        return "Sala de juntas 7";
-      case 8:
-        return "Sala de juntas 8";
-      case 9:
-        return "Sala de juntas 9";
-      case 10:
-        return "Sala de juntas 10";
-      default:
-        return "Sala de juntas";
-    }
+    let nombre = '';
+    this.salas.forEach(sala => {
+      if(sala.id_sala == id){
+        nombre = sala.nombre;
+      }
+    });
+    return nombre;
+  }
+
+  borrarJunta(id:number){
+    alertify.confirm('¿Estás seguro de eliminar esta junta?', () => {
+      this.apiReservas.borrarJunta(id).then((response: any) => {
+        if(response.success == true){
+          alertify.success('Junta Eliminada');
+          window.location.href = '/reservaciones';
+        
+        }else{
+          alertify.error('No se pudo eliminar la junta');
+        }
+      });
+    }, () => {
+      alertify.error('Operación Cancelada');
+    });
   }
 }

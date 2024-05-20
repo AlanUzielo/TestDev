@@ -1,0 +1,63 @@
+<div class="contenedor" *ngIf="!this.nuevaSala else creaNuevaSala">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+        </div>
+        </div>
+    </div>
+
+    <div class="form row g-3">
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Nombre de la Sala</label>
+          <input type="text" value="{{sala.nombre}}" class="form-control" id="inputAddress" [(ngModel)]="sala.nombre">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Ubicación de la Sala</label>
+          <input type="text" value="{{sala.ubicacion}}" class="form-control" id="inputAddress2" [(ngModel)]="sala.ubicacion">
+        </div>
+        <div class="col-md-4">
+          <label for="inputAddress3" class="form-label">Capacidad Máxima de Personas</label>
+          <input type="number" value="{{sala.capacidad}}" class="form-control" id="inputAddress3" [(ngModel)]="sala.capacidad">
+        </div>
+        <div class="col-12">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" (click)="editarSala()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #creaNuevaSala>
+  <div class="contenedor">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+        </div>
+        </div>
+    </div>
+
+    <div class="form row g-3">
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Nombre de la Sala</label>
+          <input type="text" class="form-control" id="inputAddress" [(ngModel)]="sala.nombre">
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Ubicación de la Sala</label>
+          <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="sala.ubicacion">
+        </div>
+        <div class="col-md-4">
+          <label for="inputAddress3" class="form-label">Capacidad Máxima de Personas</label>
+          <input type="number" class="form-control" id="inputAddress3" [(ngModel)]="sala.capacidad">
+        </div>
+        <div class="col-12">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" (click)="crearSala()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+      </div>
+  </div>
+</ng-template>

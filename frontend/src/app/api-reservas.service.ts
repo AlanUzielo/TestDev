@@ -11,4 +11,10 @@ export class ApiReservasService {
   getReservaciones(){
     return this.http.get('http://localhost:3000/reservas').toPromise();
   }
+
+
+
+  borrarJunta(id:number){
+    return this.http.delete('http://localhost:3000/reservas/'+id).toPromise();
+  }
 }

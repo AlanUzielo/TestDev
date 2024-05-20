@@ -3,7 +3,7 @@
 </div>
 
 <div *ngIf="existenReservaciones() else noExistenReservaciones">
-    <app-vista-reservaciones [reservaciones]="reservaciones"></app-vista-reservaciones>
+    <app-vista-reservaciones></app-vista-reservaciones>
 </div>
 
 <ng-template #noExistenReservaciones>

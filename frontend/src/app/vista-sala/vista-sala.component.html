@@ -1,1 +1,19 @@
-<p>vista-sala works!</p>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+</div>
+
+<div class="contenedor">
+  <h1>{{sala.nombre}}</h1>
+  <p>Sala que se encuentra ubicada en <b>{{sala.ubicacion}}</b></p>
+  <p>Esta cuenta con una capacidad de hasta <b>{{sala.capacidad}}</b> personas.</p>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-warning">
+        <a [routerLink]="['/editarsala', sala.id_sala, sala.nombre, sala.ubicacion, sala.capacidad,imagen]">Editar Sala</a>
+    </button>
+    <button type="button" (click)="borrarSala(sala.id_sala)" class="btn btn-danger">Eliminar Sala</button>
+</div>
+</div>

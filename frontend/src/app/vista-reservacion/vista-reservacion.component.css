@@ -1,0 +1,23 @@
+.contenedor{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    background-color: white;
+    padding: 30px;
+    line-height: 1.5;
+}
+
+a{
+    color: white;
+}
+
+p{
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,p, button{
+    margin-top: 25px;
+}

@@ -1,1 +1,19 @@
-<p>vista-reservacion works!</p>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+      </div>
+    </div>
+</div>
+
+<div class="contenedor">
+  <h1>Junta en {{nombreSala}}</h1>
+  <p><b>Fecha de Inicio: </b> {{reservacion.fecha_inicio}}</p>
+  <p><b>Fecha de Término: </b> {{reservacion.fecha_fin}}</p>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-warning">
+        <a [routerLink]="['/editarreservacion', reservacion.id_reservacion, reservacion.id_sala, reservacion.fecha_inicio,reservacion.fecha_fin,imagen]">Editar Junta</a>
+    </button>
+    <button type="button" (click)="borrarJunta(reservacion.id_reservacion)" class="btn btn-danger">Eliminar Junta</button>
+</div>
+</div>
