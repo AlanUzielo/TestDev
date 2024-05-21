@@ -12,7 +12,7 @@
   <p><b>Fecha de Término: </b> {{reservacion.fecha_fin}}</p>
   <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" class="btn btn-warning">
-        <a [routerLink]="['/editarreservacion', reservacion.id_reservacion, reservacion.id_sala, reservacion.fecha_inicio,reservacion.fecha_fin,imagen]">Editar Junta</a>
+        <a [routerLink]="['/editarreservacion', reservacion.id_reservacion, reservacion.id_sala, reservacion.fecha_inicio,reservacion.fecha_fin,imagen,nombreSala]">Editar Junta</a>
     </button>
     <button type="button" (click)="borrarJunta(reservacion.id_reservacion)" class="btn btn-danger">Eliminar Junta</button>
 </div>

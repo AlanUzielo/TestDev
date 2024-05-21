@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiSalasService } from '../api-salas.service';
 import * as alertify from 'alertifyjs';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-editar-sala',
@@ -44,7 +45,7 @@ export class EditarSalaComponent implements OnInit{
   crearSala(){
     this.apiSalas.crearSala(this.sala).then((response: any) => {
       if(response.success == true){
-        alertify.success('Sala Creada');
+        alertify.alert('Sala Creada');
         window.location.href = '/salas';
       }else{
         alertify.error('No se pudo crear la sala');
@@ -57,7 +58,7 @@ export class EditarSalaComponent implements OnInit{
     console.log(this.sala);
     this.apiSalas.actualizarSala(this.sala).then((response: any) => {
       if(response.success == true){
-        alertify.success('Sala Actualizada');
+        alertify.confirm('Sala Actualizada');
         window.location.href = '/salas';
       }else{
         alertify.error('No se pudo actualizar la sala');

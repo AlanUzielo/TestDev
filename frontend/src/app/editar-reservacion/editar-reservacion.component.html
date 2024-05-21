@@ -9,20 +9,36 @@
 
     <div class="form row g-3">
         <div class="col-12">
-          <label for="inputAddress" class="form-label">Junta en: </label>
-          <input type="text" value="{{sala.nombre}}" class="form-control" id="inputAddress" [(ngModel)]="sala.nombre">
+          <label for="inputState" class="form-label">Junta en Sala</label>
+          <select [(ngModel)]="nombreSala" (change)="filtarSala()" id="inputState" class="form-select">
+            <option selected>{{nombreSala}}</option>
+            <option *ngFor="let sala of salas">{{sala.nombre}}</option>
+          </select>
+          <!--select de todas las salas existentes-->
         </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Ubicación de la Sala</label>
-          <input type="text" value="{{sala.ubicacion}}" class="form-control" id="inputAddress2" [(ngModel)]="sala.ubicacion">
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Inicio</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_inicio" name="fechaInicio" (change)="actualizaFechaFin()">
         </div>
-        <div class="col-md-4">
-          <label for="inputAddress3" class="form-label">Capacidad Máxima de Personas</label>
-          <input type="number" value="{{sala.capacidad}}" class="form-control" id="inputAddress3" [(ngModel)]="sala.capacidad">
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Inicio</label>
+          <select [(ngModel)]="hora_inicio" (change)="ajustarHoraFin()" id="inputState" class="form-select">
+            <option selected>{{hora_inicio}}</option>
+            <option *ngFor="let hora of optionsHoraAux">{{ hora }}</option>
+          </select>
         </div>
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Término</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_fin" name="fechaInicio" disabled>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Término</label>
+          <input type="text" class="form-control" id="inputPassword4" disabled [(ngModel)]="hora_fin">
+        </div>
+        
         <div class="col-12">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" (click)="editarSala()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="editarJunta()" class="btn btn-success">Aceptar</button>
                 <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
             </div>
         </div>
@@ -41,23 +57,39 @@
 
     <div class="form row g-3">
         <div class="col-12">
-          <label for="inputAddress" class="form-label">Nombre de la Sala</label>
-          <input type="text" class="form-control" id="inputAddress" [(ngModel)]="sala.nombre">
+          <label for="inputState" class="form-label">Junta en Sala</label>
+          <select [(ngModel)]="nombreSala" (change)="filtarSala()" id="inputState" class="form-select">
+            <option selected>{{nombreSala}}</option>
+            <option *ngFor="let sala of salas">{{sala.nombre}}</option>
+          </select>
+          <!--select de todas las salas existentes-->
         </div>
-        <div class="col-12">
-          <label for="inputAddress2" class="form-label">Ubicación de la Sala</label>
-          <input type="text" class="form-control" id="inputAddress2" [(ngModel)]="sala.ubicacion">
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Inicio</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_inicio" name="fechaInicio" (change)="actualizaFechaFin()">
         </div>
-        <div class="col-md-4">
-          <label for="inputAddress3" class="form-label">Capacidad Máxima de Personas</label>
-          <input type="number" class="form-control" id="inputAddress3" [(ngModel)]="sala.capacidad">
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Inicio</label>
+          <select [(ngModel)]="hora_inicio" (change)="ajustarHoraFin()" id="inputState" class="form-select">
+            <option selected>{{hora_inicio}}</option>
+            <option *ngFor="let hora of optionsHoraAux">{{ hora }}</option>
+          </select>
         </div>
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Término</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_fin" name="fechaInicio" disabled>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Término</label>
+          <input type="text" class="form-control" id="inputPassword4" disabled [(ngModel)]="hora_fin">
+        </div>
+        
         <div class="col-12">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" (click)="crearSala()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="crearJunta()" class="btn btn-success">Aceptar</button>
                 <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
             </div>
         </div>
-      </div>
-  </div>
+    </div>
+</div>
 </ng-template>

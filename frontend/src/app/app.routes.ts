@@ -16,7 +16,7 @@ export const routes: Routes = [
     {path: 'reservaciones', component: VistaReservacionesComponent}, // Ruta para la vista de reservaciones
     {path: 'reservacion/:id_reservacion/:id_sala/:fecha_inicio/:fecha_fin/:nombre/:imagen', component: VistaReservacionComponent}, // Ruta para la vista de una reservación
     {path: 'editarreservacion', component: EditarReservacionComponent}, // Reutilizamos para la creación de una reservación
-    {path: 'editarreservacion/:id_reservacion/:id_sala/:fecha_inicio/:fecha_fin/:imagen', component: EditarReservacionComponent}, // Ruta para la vista de edición de una reservación 
+    {path: 'editarreservacion/:id_reservacion/:id_sala/:fecha_inicio/:fecha_fin/:imagen/:nombre', component: EditarReservacionComponent}, // Ruta para la vista de edición de una reservación 
 
     {path: '', redirectTo: '/inicio', pathMatch: 'full'}, // Ruta por defecto
     {path: '**', component: InicioComponent} // Ruta para cuando no se encuentra la ruta

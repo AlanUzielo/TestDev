@@ -25,7 +25,6 @@ export class VistaReservacionesComponent implements OnInit{
 
   ngOnInit(){
     this.apiReservas.getReservaciones().then((response: any) => {
-      console.log(response);
       this.reservaciones = response;
     });
     this.apiSalas.getSalas().then((response: any) => {
@@ -53,7 +52,7 @@ export class VistaReservacionesComponent implements OnInit{
     alertify.confirm('¿Estás seguro de eliminar esta junta?', () => {
       this.apiReservas.borrarJunta(id).then((response: any) => {
         if(response.success == true){
-          alertify.success('Junta Eliminada');
+          alertify.alert('Junta Eliminada');
           window.location.href = '/reservaciones';
         
         }else{

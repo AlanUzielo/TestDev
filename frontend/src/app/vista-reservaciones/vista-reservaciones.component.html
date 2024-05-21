@@ -22,7 +22,7 @@
                   <a [routerLink]="['/reservacion', reservaciones[i].id_reservacion, reservaciones[i].id_sala, reservaciones[i].fecha_inicio,reservaciones[i].fecha_fin,getNombreSala(reservaciones[i].id_sala),imagen]">Ver Junta</a>
               </button>
               <button type="button" class="btn btn-warning">
-                  <a [routerLink]="['/editarreservacion', reservaciones[i].id_reservacion, reservaciones[i].id_sala, reservaciones[i].fecha_inicio,reservaciones[i].fecha_fin,imagen]">Editar Junta</a>
+                  <a [routerLink]="['/editarreservacion', reservaciones[i].id_reservacion, reservaciones[i].id_sala, reservaciones[i].fecha_inicio,reservaciones[i].fecha_fin,imagen,getNombreSala(reservaciones[i].id_sala)]">Editar Junta</a>
               </button>
               <button type="button" (click)="borrarJunta(reservaciones[i].id_reservacion)" class="btn btn-danger">Eliminar Junta</button>
           </div>
