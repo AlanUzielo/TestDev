@@ -1,11 +1,20 @@
+<!-- Componente que se encarga de mostrar las salas y las reservaciones 
+    en la vista de inicio -->
+
+
+<!-- Si existen salas se llama al componente app-carousel y se le 
+    pasa el arreglo de salas -->
 <div *ngIf="existenSalas() else noExistenSalas">
     <app-carousel [salas]="salas"></app-carousel>
 </div>
 
+<!-- Si existen reservaciones se llama al componente app-vista-reservaciones -->
 <div *ngIf="existenReservaciones() else noExistenReservaciones">
     <app-vista-reservaciones></app-vista-reservaciones>
 </div>
 
+
+<!-- Template que se muestra si no existen reservaciones -->
 <ng-template #noExistenReservaciones>
     <div class="container">
         <div class="row">
@@ -16,6 +25,7 @@
     </div>
 </ng-template>
 
+<!-- Template que se muestra si no existen salas -->
 <ng-template #noExistenSalas>
     <div class="container">
         <div class="row">

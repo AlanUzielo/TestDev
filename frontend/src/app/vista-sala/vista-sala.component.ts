@@ -13,11 +13,18 @@ import { ApiSalasService } from '../api-salas.service';
 })
 export class VistaSalaComponent implements OnInit{
 
+  // Se define una variable de tipo Sala
   sala: Sala = {id_sala: 0, nombre: '', ubicacion: '', capacidad: 0};
-  imagen: string = '';
+  // Se define una variable para almacenar la imagen de la sala
+  imagen: string = ''; 
 
+  // Se inyecta el servicio de ApiSalasService
   constructor(private rutaActiva: ActivatedRoute, private apiSalas:ApiSalasService) { }
 
+  /*
+    Método que se ejecuta al iniciar el componente
+    Se obtienen los datos de la sala a partir de la ruta activa
+  */
   ngOnInit(){
     this.sala = {
       id_sala: this.rutaActiva.snapshot.params['id_sala'],
@@ -25,14 +32,21 @@ export class VistaSalaComponent implements OnInit{
       ubicacion: this.rutaActiva.snapshot.params['ubicacion'],
       capacidad: this.rutaActiva.snapshot.params['capacidad']
     }
+
     this.imagen = this.rutaActiva.snapshot.params['imagen'];
   }
   
+
+  /* Metodo para borrar una sala, recibe el id de la sala
+      y muestra una alerta de confirmación para
+      llamar al servicio y borrar la sala
+    */
   borrarSala(id:number){
     alertify.confirm('¿Estás seguro de eliminar esta sala?', () => {
       this.apiSalas.borrarSala(id).then((response: any) => {
         if(response.success == true){
           alertify.success('Sala Eliminada');
+          // Se redirige a la lista de salas
           window.location.href = '/salas';
         
         }else{

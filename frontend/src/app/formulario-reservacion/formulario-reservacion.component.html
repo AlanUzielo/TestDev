@@ -1,0 +1,106 @@
+<!-- Componente que permite crear o editar una reservación -->
+
+<!-- Si se desea editar una reservación, se muestra su información -->
+<div class="contenedor" *ngIf="!this.nuevaJunta else creaNuevaJunta">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+        </div>
+        </div>
+    </div>
+
+    <!-- En los inputs se muestra la información de la reservación y se permite editarla -->
+    <div class="form row g-3">
+        <div class="col-12">
+          <label for="inputState" class="form-label">Junta en Sala</label>
+          <!-- Se muestra un select con las salas existentes -->
+          <select [(ngModel)]="nombreSala" (change)="filtarSala()" id="inputState" class="form-select">
+            <option selected>{{nombreSala}}</option>
+            <option *ngFor="let sala of salas">{{sala.nombre}}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Inicio</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_inicio" name="fechaInicio" (change)="actualizaFechaFin()">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Inicio</label>
+          <!-- Se muestra un select con las horas disponibles -->
+          <select [(ngModel)]="hora_inicio" (change)="ajustarHoraFin()" id="inputState" class="form-select">
+            <option selected>{{hora_inicio}}</option>
+            <option *ngFor="let hora of optionsHoraAux">{{ hora }}</option>
+          </select>
+        </div>
+        <!-- Se muestra la fecha de término y hora de término de la reservación sin permitir editar -->
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Término</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_fin" name="fechaInicio" disabled>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Término</label>
+          <input type="text" class="form-control" id="inputPassword4" disabled [(ngModel)]="hora_fin">
+        </div>
+        
+        <div class="col-12">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" (click)="editarJunta()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Si se desea crear una nueva reservación, se muestra un formulario vacío -->
+<ng-template #creaNuevaJunta>
+  <div class="contenedor">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../assets/{{imagen}}" class="d-block w-100" alt="...">
+        </div>
+        </div>
+    </div>
+
+    <!-- En los inputs se muestran campos vacíos para crear una nueva reservación -->
+    <div class="form row g-3">
+        <div class="col-12">
+          <label for="inputState" class="form-label">Junta en Sala</label>
+          <!-- Se muestra un select con las salas existentes -->
+          <select [(ngModel)]="nombreSala" (change)="filtarSala()" id="inputState" class="form-select">
+            <option selected>{{nombreSala}}</option>
+            <option *ngFor="let sala of salas">{{sala.nombre}}</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Inicio</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_inicio" name="fechaInicio" (change)="actualizaFechaFin()">
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Inicio</label>
+          <!-- Se muestra un select con las horas disponibles -->
+          <select [(ngModel)]="hora_inicio" (change)="ajustarHoraFin()" id="inputState" class="form-select">
+            <option selected>{{hora_inicio}}</option>
+            <option *ngFor="let hora of optionsHoraAux">{{ hora }}</option>
+          </select>
+        </div>
+        <!-- Se muestra la fecha de término y hora de término de la reservación sin permitir editar -->
+        <div class="col-md-6">
+          <label for="inputAddress2" class="form-label">Fecha de Término</label>
+          <input type="date" class="form-control" id="inputFechaInicio" [(ngModel)]="fecha_fin" name="fechaInicio" disabled>
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Hora de Término</label>
+          <input type="text" class="form-control" id="inputPassword4" disabled [(ngModel)]="hora_fin">
+        </div>
+        
+        <div class="col-12">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" (click)="crearJunta()" class="btn btn-success">Aceptar</button>
+                <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</ng-template>

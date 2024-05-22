@@ -1,3 +1,6 @@
+<!-- Componente que muestra la información de una reservación en específico -->
+
+<!-- Se muestra imagen de la sala correspondiente a la reservación -->
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -6,11 +9,14 @@
     </div>
 </div>
 
+
+<!-- Se muestra la información de la reservación -->
 <div class="contenedor">
   <h1>Junta en {{nombreSala}}</h1>
   <p><b>Fecha de Inicio: </b> {{reservacion.fecha_inicio}}</p>
   <p><b>Fecha de Término: </b> {{reservacion.fecha_fin}}</p>
   <div class="btn-group" role="group" aria-label="Basic example">
+    <!-- Botones para editar y eliminar la reservación -->
     <button type="button" class="btn btn-warning">
         <a [routerLink]="['/editarreservacion', reservacion.id_reservacion, reservacion.id_sala, reservacion.fecha_inicio,reservacion.fecha_fin,imagen,nombreSala]">Editar Junta</a>
     </button>

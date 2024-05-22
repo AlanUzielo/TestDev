@@ -1,3 +1,7 @@
+/*
+    Declaramos el módulo alertifyjs para que TypeScript 
+    no nos de error al intentar importarlo.
+*/
 declare module 'alertifyjs' {
     export function alert(message: string, onOk?: () => void): void;
     export function confirm(message: string, onOk?: () => void, onCancel?: () => void): void;

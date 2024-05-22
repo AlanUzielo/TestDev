@@ -1,8 +1,11 @@
+<!-- Componente que muestra las salas existentes en un carrusel -->
+
+
 <div class="alert alert-primary" role="alert">
   Salas Existentes
 </div>
 
-
+<!-- Carrusel de salas -->
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -15,7 +18,8 @@
       <img src="../../assets/{{getImagen()}}" class="d-block w-100" alt="...">
       <div class="texto carousel-caption d-none d-md-block">
         <h3>{{salas[0].nombre}}</h3>
-        <p>Sala que se encuentra ubicada en {{salas[0].ubicacion}} con una capacidad de hasta {{salas[0].capacidad}} personas.</p>
+        <p>Sala que se encuentra ubicada en {{salas[0].ubicacion}}.</p>
+        <p>Con una capacidad de hasta {{salas[0].capacidad}} personas.</p>
         <button type="button" class="btn btn-info">
           <a [routerLink]="['/sala', salas[0].id_sala, salas[0].nombre, salas[0].ubicacion, salas[0].capacidad,imagen]">Ver Sala</a>
         </button>
@@ -30,9 +34,10 @@
                 <img src="../../assets/{{getImagen()}}" class="d-block w-100" alt="...">
                 <div class=" texto carousel-caption d-none d-md-block">
                     <h3>{{sala.nombre}}</h3>
-                    <p>Sala que se encuentra ubicada en {{sala.ubicacion}} con una capacidad de hasta {{sala.capacidad}} personas.</p>
+                    <p>Sala que se encuentra ubicada en {{sala.ubicacion}}.</p>
+                    <p>Con una capacidad de hasta {{sala.capacidad}} personas.</p>
                     <button type="button" class="btn btn-info">
-                        <a [routerLink]="['/sala',salas[i].id_sala, salas[i].nombre, salas[i].ubicacion, salas[i].capacidad,imagen]">Ver Sala</a>
+                        <a [routerLink]="['/sala',sala.id_sala, sala.nombre, sala.ubicacion, sala.capacidad,imagen]">Ver Sala</a>
                     </button>
                 </div>
             </div>
@@ -42,9 +47,10 @@
                 <img src="../../assets/{{getImagen()}}" class="d-block w-100" alt="...">
                 <div class="texto carousel-caption d-none d-md-block">
                     <h3>{{sala.nombre}}</h3>
-                    <p>Sala que se encuentra ubicada en {{sala.ubicacion}} con una capacidad de hasta {{sala.capacidad}} personas.</p>
+                    <p>Sala que se encuentra ubicada en {{sala.ubicacion}}.</p>
+                    <p>Con una capacidad de hasta {{sala.capacidad}} personas.</p>
                     <button type="button" class="btn btn-info">
-                        <a [routerLink]="['/sala', salas[i].id_sala, salas[i].nombre, salas[i].ubicacion, salas[i].capacidad,imagen]">Ver Sala</a>
+                        <a [routerLink]="['/sala', sala.id_sala, sala.nombre, sala.ubicacion, sala.capacidad,imagen]">Ver Sala</a>
                     </button>
                 </div>
             </div>

@@ -3,10 +3,10 @@ const mysql = require('mysql2'); // importamos mysql2
 // Creamos la conexion a la base de datos
 const connection = mysql.createConnection({
     host: 'localhost', // host de la base de datos
-    user: 'root', // usuario de la base de datos
-    password: '12345', // contraseña de la base de datos
+    user: 'xxx-xxx-xxx', // usuario de la base de datos
+    password: 'xxx-xxx-xxx', // contraseña de la base de datos
     database: 'juntas', // nombre de la base de datos
-    port: 3307 // puerto de la base de datos
+    port: 3306 // puerto de la base de datos
 });
 
 // Creamos la conexion a la base de datos

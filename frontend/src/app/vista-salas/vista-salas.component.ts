@@ -14,18 +14,25 @@ import * as alertify from 'alertifyjs';
 })
 export class VistaSalasComponent implements OnInit{
 
+  // Se define un arreglo de salas
   salas: Sala[] = [];
+  // Se define una variable para almacenar la imagen de la sala
   imagen: string = '';
 
+  // Se inyecta el servicio de ApiSalasService
   constructor(private apiSalas: ApiSalasService){}
 
+  /*
+    Método que se ejecuta al iniciar el componente
+    Se obtienen las salas a partir del servicio
+  */  
   ngOnInit() {
     this.apiSalas.getSalas().then((response: any) => {
-      console.log(response);
-      this.salas = response;
+      this.salas = response; // Se asignan las salas al arreglo
     });
   }
 
+  // Método para saber si existen salas
   existenSalas(): boolean {
     if (this.salas.length > 0) {
       return true;
@@ -33,11 +40,14 @@ export class VistaSalasComponent implements OnInit{
     return false;
   }
 
+  // Método para obtener la imagen de la sala
   getImagen(): string{
     this.imagen = this.apiSalas.getImagen();
     return this.imagen;
   }
 
+
+  // Método para borrar una sala, recibe el id de la sala
   borrarSala(id:number){
     alertify.confirm('¿Estás seguro de eliminar esta sala?', () => {
       this.apiSalas.borrarSala(id).then((response: any) => {
@@ -45,7 +55,7 @@ export class VistaSalasComponent implements OnInit{
           alertify.success('Sala Eliminada');
           window.location.href = '/salas';
         }else{
-          alertify.error('No se pudo eliminar la sala');
+          alertify.error(response.message);
         }
       });
     }, () => {

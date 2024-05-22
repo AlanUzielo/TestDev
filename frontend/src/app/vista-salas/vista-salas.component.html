@@ -1,13 +1,17 @@
+<!-- Componente que muestra las salas existentes en la base de datos -->
+
 <div class="alert alert-primary" role="alert">
     Salas Existentes
 </div>
 
+<!-- Se muestra un botón para crear una nueva sala -->
 <div class="d-grid gap-2 col-6 mx-auto">
     <button id="btnCrearSala" class="btn btn-primary" type="button">
-        <a [routerLink]="['/editarsala']">Crear Nueva Sala</a>
+        <a [routerLink]="['/nuevasala']">Crear Nueva Sala</a>
     </button>
 </div>
 
+<!-- Si existen salas, se muestran en tarjetas con la información de cada sala -->
 <div class="contenedor" *ngIf="existenSalas() else noExistenSalas">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <div *ngFor="let sala of salas; let i = index" class="col">
@@ -32,6 +36,7 @@
     </div>
 </div>
 
+<!-- Si no existen salas, se muestra un mensaje -->
 <ng-template #noExistenSalas>
     <p>No tienes salas reservadas</p>
 </ng-template>
